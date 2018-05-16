@@ -2,27 +2,146 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-function UserGreeting(props) {
-    return <h1>Welcome back!</h1>;
-  }
+
+class FlavorForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {value: 'coconut'};
   
-  function GuestGreeting(props) {
-    return <h1>Please sign up.</h1>;
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+  
+    handleChange(event) {
+      this.setState({value: event.target.value});
+    }
+  
+    handleSubmit(event) {
+      alert('Your favorite flavor is: ' + this.state.value);
+      event.preventDefault();
+    }
+  
+    render() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Pick your favorite La Croix flavor:
+            <select value={this.state.value} onChange={this.handleChange}>
+              <option value="grapefruit">Grapefruit</option>
+              <option value="lime">Lime</option>
+              <option value="coconut">Coconut</option>
+              <option value="mango">Mango</option>
+            </select>
+          </label>
+          <input value={null} />
+          <input type="submit" value="Submit" />
+        </form>
+      );
+    }
   }
 
-  function Greeting(props) {
-    const isLoggedIn = props.isLoggedIn;
-    if (isLoggedIn) {
-      return <UserGreeting />;
-    }
-    return <GuestGreeting />;
-  }
-  
-  ReactDOM.render(
-    // Try changing to isLoggedIn={true}:
-    <Greeting isLoggedIn={true} />,
+
+
+ReactDOM.render(
+    <FlavorForm />,
     document.getElementById('root')
-  );
+);
+
+////////////////////////////////////////
+
+// class EsseyForm extends React.Component {
+//     constructor (props) {
+//         super(props);
+//         this.state = {value: 'Please write an essey about you favorite DOM element.'};
+
+//         this.handleChange = this.handleChange.bind(this);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//     }
+
+//     handleChange(event) {
+//         this.setState({value: event.target.value});
+//     }
+
+//     handleSubmit (event) {
+//         alert('An essey was submitted: ' + this.state.value);
+//         event.preventDefault();
+//     }
+
+//     render () {
+//         return (
+//             <form onSubmit={this.handleSubmit}>
+//                 <label>
+//                     Name:
+//                     <textarea value={this.state.value} onChange={this.handleChange} />
+//                 </label>
+//                 <input type="submit" value="Submit" />
+//             </form>
+//         );
+//     }
+// }
+
+// ReactDOM.render(
+//     <EsseyForm />,
+//     document.getElementById('root')
+// );
+
+
+
+//////////////////////////////////
+
+// function NumberList(props) {
+//     const numbers = props.numbers;
+//     const listItems = numbers.map((number)=> <li>{number}</li>);
+
+//     return (
+//         <ul>{listItems}</ul>
+//     );
+// }
+
+// const numbers = [1,2,3,4];
+
+// ReactDOM.render(
+//     <NumberList numbers={numbers} />,
+//     document.getElementById('root')
+// );
+
+////////////////////////////////
+
+// const numbers = [1,2,3,4];
+// const listItems = numbers.map((number) =>
+//     <li> {number} </li>
+// )
+
+// ReactDOM.render(
+//     <ul>{listItems}</ul>,
+//     document.getElementById('root')
+// )
+
+
+///////////////////////////////////////
+
+
+// function UserGreeting(props) {
+//     return <h1>Welcome back!</h1>;
+//   }
+  
+//   function GuestGreeting(props) {
+//     return <h1>Please sign up.</h1>;
+//   }
+
+//   function Greeting(props) {
+//     const isLoggedIn = props.isLoggedIn;
+//     if (isLoggedIn) {
+//       return <UserGreeting />;
+//     }
+//     return <GuestGreeting />;
+//   }
+  
+//   ReactDOM.render(
+//     // Try changing to isLoggedIn={true}:
+//     <Greeting isLoggedIn={true} />,
+//     document.getElementById('root')
+//   );
 
 
 
